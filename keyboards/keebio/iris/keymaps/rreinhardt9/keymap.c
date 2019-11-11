@@ -7,7 +7,10 @@ extern keymap_config_t keymap_config;
 #define _RAISE 2
 #define _ADJUST 3
 
+#define KC_ KC_TRNS
 #define KC_CTRLESC CTL_T(KC_ESC)
+#define KC_LOWER LOWER
+#define KC_RAISE RAISE
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
@@ -18,19 +21,19 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  [_QWERTY] = LAYOUT(
+  [_QWERTY] = LAYOUT_kc(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,
+       GRV   ,   1    ,   2    ,   3    ,   4    ,   5    ,                              6    ,   7    ,   8    ,   9    ,   0    ,  DEL   ,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
+       TAB   ,   Q    ,   W    ,   E    ,   R    ,   T    ,                              Y    ,   U    ,   I    ,   O    ,   P    ,  BSLS  ,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-  KC_CTRLESC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+     CTRLESC ,   A    ,   S    ,   D    ,   F    ,   G    ,                              H    ,   J    ,   K    ,   L    ,  SCLN  ,  QUOT  ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   _______,           KC_ENT,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+       LSFT  ,   Z    ,   X    ,   C    ,   V    ,   B    ,        ,           ENT   ,   N    ,   M    ,  COMM  ,  DOT   ,  SLSH  ,  RSFT  ,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    KC_LALT,  LOWER,  KC_CAPS,                    KC_SPC,  RAISE,  KC_LGUI
+                                      LALT  , LOWER  ,  CAPS  ,                    SPC   ,  RAISE ,  LGUI
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
-  ),
+  )   ,
 
   [_LOWER] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
