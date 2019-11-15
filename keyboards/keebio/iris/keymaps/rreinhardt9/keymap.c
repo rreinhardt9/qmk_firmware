@@ -9,8 +9,12 @@ extern keymap_config_t keymap_config;
 
 #define KC_ KC_TRNS
 #define KC_CTRLESC CTL_T(KC_ESC)
+#define KC_ALTENT ALT_T(KC_ENT)
+#define KC_CMDTAB CMD_T(KC_TAB)
+#define KC_RSFTMINS RSFT_T(KC_MINS)
 #define KC_LOWER LOWER
 #define KC_RAISE RAISE
+#define KC_RESET RESET
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
@@ -23,29 +27,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = LAYOUT_kc(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-       GRV   ,   1    ,   2    ,   3    ,   4    ,   5    ,                              6    ,   7    ,   8    ,   9    ,   0    ,  DEL   ,
+       MINS  ,   1    ,   2    ,   3    ,   4    ,   5    ,                              6    ,   7    ,   8    ,   9    ,   0    ,  PLUS  ,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-       TAB   ,   Q    ,   W    ,   E    ,   R    ,   T    ,                              Y    ,   U    ,   I    ,   O    ,   P    ,  BSLS  ,
+       GRV   ,   Q    ,   W    ,   E    ,   R    ,   T    ,                              Y    ,   U    ,   I    ,   O    ,   P    ,  BSLS  ,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     CTRLESC ,   A    ,   S    ,   D    ,   F    ,   G    ,                              H    ,   J    ,   K    ,   L    ,  SCLN  ,  QUOT  ,
+       CAPS  ,   A    ,   S    ,   D    ,   F    ,   G    ,                              H    ,   J    ,   K    ,   L    ,  SCLN  ,  QUOT  ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       LSFT  ,   Z    ,   X    ,   C    ,   V    ,   B    ,        ,           ENT   ,   N    ,   M    ,  COMM  ,  DOT   ,  SLSH  ,  RSFT  ,
+       LSFT  ,   Z    ,   X    ,   C    ,   V    ,   B    , CMDTAB ,          ALTENT ,   N    ,   M    ,  COMM  ,  DOT   ,  SLSH  ,RSFTMINS,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                      LALT  , LOWER  ,  CAPS  ,                    SPC   ,  RAISE ,  LGUI
+                                    CTRLESC , LOWER  ,  ESC   ,                    SPC   ,  RAISE , CTRLESC
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   )   ,
 
-  [_LOWER] = LAYOUT(
+  [_LOWER] = LAYOUT_kc(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                            KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PGUP,
+      TILD   ,  EXLM  ,   AT   ,  HASH  ,  DLR   ,  PERC  ,                             CIRC  ,  AMPR  ,  ASTR  ,  LPRN  ,  RPRN  ,  PGUP  ,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     RESET,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_PGDN,
+      RESET  ,   1    ,   2    ,   3    ,   4    ,   5    ,                              6    ,   7    ,   8    ,   9    ,   0    ,  PGDN  ,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     BL_STEP,  _______, KC_LEFT, KC_RGHT, KC_UP,   KC_LBRC,                            KC_RBRC, KC_P4,   KC_P5,   KC_P6,   KC_PLUS, KC_HOME,
+             ,        ,  LEFT  ,  RGHT  ,   UP   ,  LBRC  ,                             RBRC  ,   P4   ,   P5   ,   P6   ,  PLUS  ,  HOME  ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     BL_STEP, _______, _______, _______, KC_DOWN, KC_LCBR, KC_LPRN,          KC_RPRN, KC_RCBR, KC_P1,   KC_P2,   KC_P3,   KC_MINS, KC_END,
+             ,        ,        ,        ,  DOWN  ,  LCBR  ,  LPRN  ,           RPRN  ,  RCBR  ,   P1   ,   P2   ,   P3   ,  MINS  ,  END   ,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    _______, _______, KC_DEL,                    KC_DEL,  _______, KC_P0
+                                            ,        ,  DEL   ,                    ENT   ,        ,   P0
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
